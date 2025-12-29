@@ -2,6 +2,8 @@
 
 A simple and interactive Tic Tac Toe game built using HTML, CSS, and JavaScript. Supports dark/light mode and keeps score.
 
+live link :-  tic-tac-toe-game-khaki-theta.vercel.app
+
 ## Features
 - Two-player gameplay
 - Scoreboard (X, O, Draws)
