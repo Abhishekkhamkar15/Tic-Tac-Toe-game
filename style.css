@@ -1,0 +1,276 @@
+/* =========================
+   Global Reset
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg: linear-gradient(135deg, #1d2671, #c33764);
+    --text: #ffffff;
+}
+
+/* =========================
+   Body & Theme
+========================= */
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+/* Light Mode */
+body.light {
+    --bg: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    --text: #111;
+}
+
+/* =========================
+   Dark/Light Toggle Button
+========================= */
+#theme-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    padding: 10px 16px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    z-index: 1000;
+    transition: all 0.25s ease;
+}
+
+#theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   Hide Utility
+========================= */
+.hide {
+    display: none;
+}
+
+/* =========================
+   Message Container (Over Board)
+========================= */
+.msg-container {
+    position: absolute;       /* relative to section */
+    top: 50%;                 /* vertical center */
+    left: 50%;                /* horizontal center */
+    transform: translate(-50%, -50%); /* exact center */
+    background: rgba(0, 0, 0, 0.35);
+    padding: 16px 32px;
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    text-align: center;
+    min-width: 260px;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#msg {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    animation: glow 1.5s infinite alternate;
+}
+
+.hide{
+    display: none;
+}
+
+/* =========================
+   Main Section
+========================= */
+section {
+    position: relative; /* important for msg-container positioning */
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    padding: 30px 40px;
+    border-radius: 22px;
+    box-shadow: 
+        0 25px 45px rgba(0, 0, 0, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+/* =========================
+   Title
+========================= */
+h1 {
+    font-size: 2.3rem;
+    margin-bottom: 22px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   Scoreboard
+========================= */
+.scoreboard {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.scoreboard span {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+}
+
+/* =========================
+   Game Layout
+========================= */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+/* =========================
+   Tic Tac Toe Grid
+========================= */
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 90px);
+    gap: 15px;
+}
+
+/* =========================
+   3D Game Buttons
+========================= */
+.box {
+    width: 90px;
+    height: 90px;
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: #333;
+    background: linear-gradient(145deg, #ffffff, #dadada);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+
+    box-shadow:
+        7px 7px 16px rgba(0, 0, 0, 0.28),
+        -7px -7px 16px rgba(255, 255, 255, 0.75);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.box:hover {
+    transform: translateY(-4px);
+}
+
+.box:active {
+    transform: translateY(2px);
+    box-shadow:
+        inset 6px 6px 12px rgba(0, 0, 0, 0.25),
+        inset -6px -6px 12px rgba(255, 255, 255, 0.8);
+}
+
+/* =========================
+ Colors
+========================= */
+.box.x {
+    color: #050505;
+    text-shadow: 0 0 12px rgba(255, 60, 172, 0.9);
+}
+
+.box.o {
+    color: #efe410;
+    text-shadow: 0 0 12px rgba(18, 19, 19, 0.9);
+}
+
+.box:disabled {
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+/* =========================
+   Control Buttons
+========================= */
+button {
+    padding: 12px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 28px rgba(0, 0, 0, 0.45);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* =========================
+   Glow Animation
+========================= */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 6px #ffffff;
+    }
+    to {
+        text-shadow: 
+            0 0 18px #161414,
+            0 0 28px #f5eef1;
+    }
+}
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 480px) {
+    .game {
+        grid-template-columns: repeat(3, 70px);
+        gap: 12px;
+    }
+
+    .box {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    section {
+        padding: 25px 28px;
+    }
+
+    .msg-container {
+        top: 60px;
+    }
+}
